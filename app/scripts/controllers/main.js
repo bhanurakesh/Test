@@ -8,7 +8,7 @@
  * Controller of the movieSearchApp
  */
 
-var app= angular.module('movieSearchApp');
+var app= angular.module('movieSearchApp',['ui.router', 'angularUtils.directives.dirPagination']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/home');
