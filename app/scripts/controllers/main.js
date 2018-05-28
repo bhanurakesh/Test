@@ -17,7 +17,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',function
   $stateProvider 
       .state('home', {
           url: '/home',
-          templateUrl: "http://" + window.location.host + "../../views/templates/main.html",
+          templateUrl: "http://" + window.location.host + "Test/app/views/templates/main.html",
           controller: 'homeController'
       })
       .state('searchList', { 
