@@ -13,10 +13,11 @@ var app= angular.module('movieSearchApp',['ui.router', 'angularUtils.directives.
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',function ($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/home');
 
+
   $stateProvider 
       .state('home', {
           url: '/home',
-          templateUrl: '../../views/main.html',
+          templateUrl: '../../404.html',
           controller: 'homeController'
       })
       .state('searchList', { 
