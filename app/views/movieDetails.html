@@ -1,0 +1,87 @@
+<div class="container" id="search">
+    <form name="valid_select">
+        <div class="col-md-2">
+            <div class="form-group">
+                <select class="form-control" ng-model="selected" required>
+                    <option value="">Select Category </option>
+                    <option ng-repeat="item in options" value="{{item.value}}">{{item.label}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="searchByTitle" placeholder="search" required>
+            </div>
+        </div>
+        <span>
+            <button class="btn btn-primary" ng-click="search()" ng-disabled="valid_select.$invalid" type="button">Go!</button>
+        </span>
+    </form>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="backdrop">
+            <img ng-src="{{details.backdrop_path}}"> </img>
+        </div>
+        <div class="col-md-4">
+            <a href="#">
+                <img ng-src="{{details.poster_path}}" height="80%"></img>
+            </a>
+        </div>
+        <div class="col-md-8" id="img_details">
+            
+            <h1 style="font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif; font-size: xx-large ; font-weight: 300px; margin-bottom: 20px">
+                {{details.title}}
+            </h1>
+
+            <h4>
+                <b> Overview </b>
+            </h4>
+
+            <p> {{details.overview}} </p>
+
+            <p>
+                <b> Directed By: </b>
+                {{director.name}} 
+            </p>
+
+            <p>
+                <b> Genres: </b>
+                <span ng-repeat="y in details.genres">
+                    {{" "}} {{y.name}}
+                </span>
+            </p>
+
+            <p>
+                <b> Duration: </b>
+                {{details.runtime + " min"}}
+            </p>
+
+        </div>
+    </div>  
+
+    <div>
+        <h3 class="Cast" style="color: ghostwhite;">
+            <b> Top Billed Cast </b>
+        </h3>
+
+        <table>
+            <tr>
+                <td>
+                    <div ng-repeat="cast in cast" class="wrap">
+                        <div ng-if="$index < 9" class="card">
+                            <img ng-src="{{ cast.profile_path }}" alt="">
+                            <div class="card_details">
+                                <h4>
+                                    <b>{{ cast.name }}</b>
+                                </h4>
+                                <p>{{ cast.character}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

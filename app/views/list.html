@@ -1,0 +1,100 @@
+<div class="container" id="search">
+    <form name="valid_select">
+        <div class="col-md-2">
+            <div class="form-group">
+                <select class="form-control" ng-model="selected" required>
+                    <option value="">Select Category </option>
+                    <option ng-repeat="item in options" value="{{item.value}}">{{item.label}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="searchByTitle" placeholder="search" required>
+            </div>
+        </div>
+        <span>
+            <button class="btn btn-primary" ng-click="search()" ng-disabled="valid_select.$invalid" type="button">Go!</button>
+        </span>
+    </form>
+</div>
+
+<div class="container" ng-if="showTvDetails">
+    <table class="table table-striped" style="background-color:white">
+        <thead>
+            <tr>
+                <th ng-click="sort('name')"> Name
+                    <span class="glyphicon sort-icon" ng-show=" sortKey === 'name' " ng-class="{'glyphicon-chevron-up': reverse,'glyphicon-chevron-down': !reverse}"></span>
+                </th>
+                <th ng-click="sort('original_language')"> Language
+                    <span class="glyphicon sort-icon" ng-show=" sortKey === 'original_language' " ng-class="{'glyphicon-chevron-up': reverse,'glyphicon-chevron-down': !reverse}"></span>
+                </th>
+                <th ng-click="sort('first_air_date')"> First Air Date
+                    <span class="glyphicon sort-icon" ng-show=" sortKey === 'first_air_date' " ng-class="{'glyphicon-chevron-up': reverse,'glyphicon-chevron-down': !reverse}"></span>
+                </th>
+                <th ng-click="sort('vote_average')"> Rating
+                    <span class="glyphicon sort-icon" ng-show=" sortKey === 'vote_average' " ng-class="{'glyphicon-chevron-up': reverse,'glyphicon-chevron-down': !reverse}"></span>
+                </th>
+                <th> &nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr dir-paginate="a in tvShows| itemsPerPage: 5 | filter: searchByTitle | orderBy:sortKey:reverse">
+                <td>
+                    <img class="poster" ng-src="{{ a.poster_path }}" width="75" /> {{a.name}}
+                </td>
+                <td> {{a.original_language}} </td>
+                <td> {{a.first_air_date}} </td>
+                <td> {{a.vote_average}}</td>
+                <td>
+                    <button ng-click="tvShowDetails(a)" class="btn btn-info">
+                        View Details
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <dir-pagination-controls max-size="5" direction-links=true boundary-links=true>
+    </dir-pagination-controls>
+</div>
+
+<div class="container" ng-if="showMovieDetails">
+    <table class="table table-striped" style="background-color:white">
+        <thead>
+            <tr>
+                <th ng-click="sort('title')"> Title
+                    <span class="glyphicon sort-icon" ng-show=" sortKey === 'title' " ng-class="{'glyphicon-chevron-up': reverse,'glyphicon-chevron-down': !reverse}"></span>
+                </th>
+                <th ng-click="sort('original_language')"> Language
+                    <span class="glyphicon sort-icon" ng-show=" sortKey === 'original_language' " ng-class="{'glyphicon-chevron-up': reverse,'glyphicon-chevron-down': !reverse}"></span>
+                </th>
+                <th ng-click="sort('release_date')"> Release Date
+                    <span class="glyphicon sort-icon" ng-show=" sortKey === 'release_date' " ng-class="{'glyphicon-chevron-up': reverse,'glyphicon-chevron-down': !reverse}"></span>
+                </th>
+                <th ng-click="sort('vote_average')"> Rating
+                    <span class="glyphicon sort-icon" ng-show=" sortKey === 'vote_average' " ng-class="{'glyphicon-chevron-up': reverse,'glyphicon-chevron-down': !reverse}"></span>
+                </th>
+                <th> &nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr dir-paginate="a in movies| itemsPerPage: 5 | filter: searchByTitle | orderBy:sortKey:reverse">
+                <td>
+                    <img class="poster" ng-src="{{ a.poster_path }}" width="75" /> {{a.title}}
+                </td>
+                <td> {{a.original_language}} </td>
+                <td> {{a.release_date}} </td>
+                <td> {{a.vote_average}}</td>
+                <td>
+                    <button ng-click="movieDetails(a)" class="btn btn-info">
+                        View Details
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <dir-pagination-controls max-size="5" direction-links=true boundary-links=true>
+    </dir-pagination-controls>
+</div>
