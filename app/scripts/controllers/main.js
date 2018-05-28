@@ -17,22 +17,22 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',function
   $stateProvider 
       .state('home', {
           url: '/home',
-          templateUrl: '../../404.html',
+          templateUrl: '../../views/templates/main.html',
           controller: 'homeController'
       })
       .state('searchList', { 
           url: '/searchList/:category/:name',
-          templateUrl: '../../views/list.html',
+          templateUrl: '../../views/templates/list.html',
           controller: 'searchListController'
       })
       .state('searchMovieDetails', {
           url: '/searchMovieDetails/:movieid',
-          templateUrl: '../../views/movieDetails.html',
+          templateUrl: '../../views/templates/movieDetails.html',
           controller: 'movieDetailsController'
       })
       .state('searchTvShowDetails', {
           url: '/searchTvShowDetails/:tvshowid',
-          templateUrl: '../../views/tvShowDetails.html',
+          templateUrl: '../../views/templates/tvShowDetails.html',
           controller: 'tvDetailsController'
       })
 
