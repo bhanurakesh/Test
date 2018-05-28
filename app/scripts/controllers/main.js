@@ -10,7 +10,7 @@
 
 var app= angular.module('movieSearchApp',['ui.router', 'angularUtils.directives.dirPagination']);
 
-app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',function ($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/home');
 
   $stateProvider 
@@ -35,7 +35,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
           controller: 'tvDetailsController'
       })
 
-});
+}]);
 
 app.controller('homeController', ['$scope', 'myFactory', '$state', 'myService', function ($scope, myFactory, $state, myService) {
 
