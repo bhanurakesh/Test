@@ -13,6 +13,7 @@
   "overrides": {
     "bootstrap": {
       "main": [
+        "bower_components/angular-ui-router.js",
         "less/bootstrap.less",
         "dist/css/bootstrap.css",
         "dist/js/bootstrap.js"
