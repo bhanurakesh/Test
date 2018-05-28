@@ -101,6 +101,8 @@ app.controller('searchListController', ['$scope', 'myFactory', '$state', 'myServ
 
           $scope.movies = response.data.results;
 
+          console.log($scope.movies);
+
           for (var i = 0; i < $scope.movies.length; i++) {
               $scope.movies[i].original_language = getLanguageName($scope.movies[i].original_language);
               $scope.movies[i].poster_path = "https://image.tmdb.org/t/p/" + "w200" + $scope.movies[i].poster_path;
@@ -156,11 +158,12 @@ app.controller("movieDetailsController", ['$scope', 'myFactory', '$state', 'mySe
       $scope.cast = $scope.details.credits.cast;
       $scope.crew = $scope.details.credits.crew;
 
-      for (i = 0; i < $scope.cast.length; i++) {
+      for (var i = 0; i < $scope.cast.length; i++) {
           $scope.cast[i].profile_path = "https://image.tmdb.org/t/p/" + "w138_and_h175_face" + $scope.cast[i].profile_path;
-      }
+          console.log($scope.cast[i].profile_path);
+        }
 
-      for (i = 0; i < $scope.crew.length; i++) {
+      for (var i = 0; i < $scope.crew.length; i++) {
           if ($scope.crew[i].department === 'Directing') {
               $scope.director.name = $scope.crew[i].name;
               $scope.director.profile_path = "https://image.tmdb.org/t/p/" + "w138_and_h175_face" + $scope.crew[i].profile_path;
@@ -209,11 +212,11 @@ app.controller("tvDetailsController", ['$scope', '$state', 'myService', 'myFacto
       }
 
 
-      for (i = 0; i < $scope.cast.length; i++) {
+      for (var i = 0; i < $scope.cast.length; i++) {
           $scope.cast[i].profile_path = "https://image.tmdb.org/t/p/" + "w138_and_h175_face" + $scope.cast[i].profile_path;
       }
 
-      for (i = 0; i < $scope.crew.length; i++) {
+      for (var i = 0; i < $scope.crew.length; i++) {
           if ($scope.crew[i].department === 'Directing') {
               $scope.director.name = $scope.crew[i].name;
               $scope.director.profile_path = "https://image.tmdb.org/t/p/" + "w138_and_h175_face" + $scope.crew[i].profile_path;
