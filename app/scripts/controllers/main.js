@@ -12,27 +12,29 @@ var app= angular.module('movieSearchApp',['ui.router', 'angularUtils.directives.
 
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',function ($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/home');
+/*   $locationProvider.html5Mode(true)
+                   .hashPrefix('!'); */              
 
 
   $stateProvider 
       .state('home', {
           url: '/home',
-          templateUrl: "http://" + window.location.host + "Test/app/views/templates/main.html",
+          templateUrl: "../../views/templates/main.html",
           controller: 'homeController'
       })
       .state('searchList', { 
           url: '/searchList/:category/:name',
-          templateUrl: "http://" + window.location.host + "Test/app/views/templates/list.html",
+          templateUrl: "../../views/templates/list.html",
           controller: 'searchListController'
       })
       .state('searchMovieDetails', {
           url: '/searchMovieDetails/:movieid',
-          templateUrl: "http://" + window.location.host + "Test/app/views/templates/movieDetails.html",
+          templateUrl: "../../views/templates/movieDetails.html",
           controller: 'movieDetailsController'
       })
       .state('searchTvShowDetails', {
           url: '/searchTvShowDetails/:tvshowid',
-          templateUrl: "http://" + window.location.host + "Test/app/views/templates/tvShowDetails.html",
+          templateUrl: "../../views/templates/tvShowDetails.html",
           controller: 'tvDetailsController'
       })
 
